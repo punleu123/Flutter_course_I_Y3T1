@@ -32,8 +32,8 @@ class Quiz {
 
   Quiz({required this.questions});
 
-  void addAnswer(Answer asnwer) {
-    this.answers.add(asnwer);
+  void addAnswer(Answer answer) {
+    this.answers.add(answer);
   }
 
   int getScoreInPercentage() {
@@ -53,4 +53,11 @@ class Quiz {
     }
     return totalPoints;
   }
+}
+
+class Player {
+  final String name;
+  final int score;
+
+  Player({required this.name, required this.score});
 }
