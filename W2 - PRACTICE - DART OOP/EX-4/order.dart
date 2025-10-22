@@ -14,7 +14,7 @@ class Order {
     this.deliveryAddress,
     double? deliveryFee,
   }) : deliveryFee =
-           deliveryFee ??
+             deliveryFee ??
            (deliveryMethod == DeliveryMethod.DELIVERED ? 5.0 : 0.0) {
     if (items.isEmpty) {
       throw ArgumentError('Order must contain at least one item.');

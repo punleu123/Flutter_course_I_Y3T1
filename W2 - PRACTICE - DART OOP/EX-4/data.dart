@@ -1,7 +1,6 @@
 import 'model.dart';
 import 'order.dart';
-
-/// Simple in-memory data store (no JSON)
+  
 class DataSource {
   final List<Product> _products = [];
   final List<Order> _orders = [];
