@@ -40,11 +40,6 @@ class QuizRepository {
   }
 
   void writePlayers(List<Player> players) {
-    final dataDir = Directory('data');
-    if (!dataDir.existsSync()) {
-      dataDir.createSync();
-    }
-
     final playersFile = File('data/players.json');
     final playersData = players.map((player) => player.toJson()).toList();
     final jsonString = JsonEncoder.withIndent('  ').convert(playersData);

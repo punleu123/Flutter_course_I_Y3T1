@@ -117,19 +117,11 @@ class Quiz {
   List<Answer> get getAnswers => answers;
 
   Question? getQuestionById(String id) {
-    try {
-      return questions.firstWhere((question) => question.id == id);
-    } catch (e) {
-      return null;
-    }
+    return questions.firstWhere((question) => question.id == id);
   }
 
   Answer? getAnswerById(String id) {
-    try {
-      return answers.firstWhere((answer) => answer.id == id);
-    } catch (e) {
-      return null;
-    }
+    return answers.firstWhere((answer) => answer.id == id);
   }
 
   List<Answer> getAnswersByQuestionId(String questionId) {
