@@ -17,7 +17,6 @@ class Question {
     this.point = 1,
   }) : id = id ?? uuid.v4();
 
-  // Getter methods
   String get getId => id;
   String get getTitle => title;
   List<String> get getChoices => choices;
@@ -64,7 +63,6 @@ class Answer {
     required this.answerChoice,
   }) : id = id ?? uuid.v4();
 
-  // Getter methods
   String get getId => id;
   String get getQuestionId => questionId;
   String get getAnswerChoice => answerChoice;
@@ -114,12 +112,10 @@ class Quiz {
   })  : id = id ?? uuid.v4(),
         answers = answers ?? [];
 
-  // Getter methods
   String get getId => id;
   List<Question> get getQuestions => questions;
   List<Answer> get getAnswers => answers;
 
-  // Get question by ID
   Question? getQuestionById(String id) {
     try {
       return questions.firstWhere((question) => question.id == id);
@@ -128,7 +124,6 @@ class Quiz {
     }
   }
 
-  // Get answer by ID
   Answer? getAnswerById(String id) {
     try {
       return answers.firstWhere((answer) => answer.id == id);
@@ -137,7 +132,6 @@ class Quiz {
     }
   }
 
-  // Get answers by question ID
   List<Answer> getAnswersByQuestionId(String questionId) {
     return answers.where((answer) => answer.questionId == questionId).toList();
   }
@@ -179,25 +173,20 @@ class Quiz {
   }
 
   factory Quiz.fromJson(Map<String, dynamic> json) {
-    try {
-      var questionsJson = json["questions"] as List? ?? [];
-      var questions = questionsJson.map((q) => Question.fromJson(q)).toList();
+    var questionsJson = json["questions"] as List? ?? [];
+    var questions = questionsJson.map((q) => Question.fromJson(q)).toList();
 
-      var answers = <Answer>[];
-      if (json.containsKey('answers')) {
-        var answersJson = json["answers"] as List? ?? [];
-        answers = answersJson.map((a) => Answer.fromJson(a)).toList();
-      }
-
-      return Quiz(
-        id: json['id']?.toString(),
-        questions: questions,
-        answers: answers,
-      );
-    } catch (e) {
-      print('❌ Error parsing Quiz from JSON: $e');
-      rethrow;
+    var answers = <Answer>[];
+    if (json.containsKey('answers')) {
+      var answersJson = json["answers"] as List? ?? [];
+      answers = answersJson.map((a) => Answer.fromJson(a)).toList();
     }
+
+    return Quiz(
+      id: json['id']?.toString(),
+      questions: questions,
+      answers: answers,
+    );
   }
 
   @override
@@ -220,7 +209,6 @@ class Player {
     required this.score,
   }) : id = id ?? uuid.v4();
 
-  // Getter methods
   String get getId => id;
   String get getName => name;
   int get getScore => score;
